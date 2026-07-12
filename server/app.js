@@ -9,21 +9,24 @@ app.use(express.json());
 
 // Route Imports
 const authRoutes = require("./routes/authRouters");
-const userRoutes = require("./routes/userRoutes");
-const assetRoutes = require("./routes/assetRoutes");
+const userRoutes = require("./routes/userRouters");
+const assetRoutes = require("./routes/assetRouters");
 const assignmentRoutes = require("./routes/assignmentRouters");
 const departmentRoutes = require("./routes/departmentRouters");
 
 // API Routes
-app.use("/api/auth", authRoutes);
-app.use("/api/users", userRoutes);
-app.use("/api/assets", assetRoutes);
-app.use("/api/assignments", assignmentRoutes);
-app.use("/api/departments", departmentRoutes);
+app.use("/api/auth", authRouters);
+app.use("/api/users", userRouters);
+app.use("/api/assets", assetRouters);
+app.use("/api/assignments", assignmentRouters);
+app.use("/api/departments", departmentRouters);
 
 // Base Health Route
-app.get('/', (req, res) => {
-  res.send('AssetFlow API is running');
+app.get("/", (req, res) => {
+    res.status(200).send("AssetFlow API is running");
 });
+
+const errorHandler = require("./middleware/errorMiddleware");
+app.use(errorHandler);
 
 module.exports = app;

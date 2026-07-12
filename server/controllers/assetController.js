@@ -9,7 +9,7 @@ const getAssets = async (req, res) => {
             data: assets,
         });
     } catch (error) {
-        res.status(500).json({
+        return res.status(500).json({
             success: false,
             message: error.message,
         });
@@ -32,7 +32,7 @@ const getAsset = async (req, res) => {
             data: asset,
         });
     } catch (error) {
-        res.status(500).json({
+        return res.status(500).json({
             success: false,
             message: error.message,
         });
@@ -41,6 +41,12 @@ const getAsset = async (req, res) => {
 
 const addAsset = async (req, res) => {
     try {
+        if (!req.body.assetName) {
+            return res.status(400).json({
+                success: false,
+                message: "Asset name is required",
+            });
+        }
         const asset = await assetService.createAsset(req.body);
 
         res.status(201).json({
@@ -48,7 +54,7 @@ const addAsset = async (req, res) => {
             data: asset,
         });
     } catch (error) {
-        res.status(500).json({
+        return res.status(500).json({
             success: false,
             message: error.message,
         });
@@ -57,6 +63,12 @@ const addAsset = async (req, res) => {
 
 const allocateAsset = async (req, res) => {
     try {
+        if (!req.body.userId) {
+            return res.status(400).json({
+                success: false,
+                message: "User ID is required",
+            });
+        }
         const asset = await assetService.allocateAsset(
             req.params.id,
             req.body.userId
@@ -67,7 +79,7 @@ const allocateAsset = async (req, res) => {
             data: asset,
         });
     } catch (error) {
-        res.status(500).json({
+        return res.status(500).json({
             success: false,
             message: error.message,
         });
@@ -83,7 +95,7 @@ const returnAsset = async (req, res) => {
             data: asset,
         });
     } catch (error) {
-        res.status(500).json({
+        return res.status(500).json({
             success: false,
             message: error.message,
         });

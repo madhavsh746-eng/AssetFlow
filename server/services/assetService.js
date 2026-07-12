@@ -1,13 +1,16 @@
 const Asset = require("../models/Asset");
 
+// Get All Assets
 const getAllAssets = async () => {
     return await Asset.find();
 };
 
+// Get Asset By ID
 const getAssetById = async (id) => {
     return await Asset.findById(id);
 };
 
+// Create Asset
 const createAsset = async (data) => {
     return await Asset.create(data);
 };
@@ -18,6 +21,11 @@ const allocateAsset = async (id, userId) => {
 
     if (!asset) {
         throw new Error("Asset not found");
+    }
+
+    // Check if asset is already allocated
+    if (asset.status === "Allocated") {
+        throw new Error("Asset already allocated");
     }
 
     asset.status = "Allocated";
@@ -34,6 +42,11 @@ const returnAsset = async (id) => {
 
     if (!asset) {
         throw new Error("Asset not found");
+    }
+
+    // Check if asset is already available
+    if (asset.status === "Available") {
+        throw new Error("Asset is already available");
     }
 
     asset.status = "Available";
