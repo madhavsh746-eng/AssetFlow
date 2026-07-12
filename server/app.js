@@ -12,12 +12,14 @@ const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
 const assetRoutes = require("./routes/assetRoutes");
 const assignmentRoutes = require("./routes/assignmentRoutes");
+const departmentRoutes = require("./routes/departmentRoutes");
 
 // API Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/assets", assetRoutes);
 app.use("/api/assignments", assignmentRoutes);
+app.use("/api/departments", departmentRoutes);
 
 // Base Health Route
 app.get('/', (req, res) => {
