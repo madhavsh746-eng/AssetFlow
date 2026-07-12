@@ -2,11 +2,16 @@ const express = require("express");
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-    res.json({
-        success: true,
-        message: "Asset Route Working",
-    });
-});
+const {
+    getAssets,
+    getAsset,
+    addAsset,
+} = require("../controllers/assetController");
+
+router.get("/", getAssets);
+
+router.get("/:id", getAsset);
+
+router.post("/", addAsset);
 
 module.exports = router;
