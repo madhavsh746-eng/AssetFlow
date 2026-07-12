@@ -1,21 +1,35 @@
-const Input = ({
-  label,
-  placeholder,
+const Input = ({ 
+  label, 
+  name, 
+  value, 
+  onChange, 
+  placeholder, 
+  error,
   type = "text"
 }) => {
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="mb-4">
 
-      <label className="font-medium">
+      <label className="block text-sm font-medium mb-1">
         {label}
       </label>
 
       <input
         type={type}
+        name={name}
+        value={value}
+        onChange={onChange}
         placeholder={placeholder}
-        className="border rounded-lg p-2 outline-none"
+        className={`w-full border rounded-lg px-3 py-2 outline-none
+        ${error ? "border-red-500" : "border-gray-300"}`}
       />
+
+      {error && (
+        <p className="text-red-500 text-sm mt-1">
+          {error}
+        </p>
+      )}
 
     </div>
   );

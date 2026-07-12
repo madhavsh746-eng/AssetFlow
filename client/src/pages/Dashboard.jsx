@@ -1,6 +1,6 @@
 import AssetTable from "../components/table/AssetTable";
 import DashboardCard from "../components/dashboard/DashboardCard";
-import Input from "../components/forms/Input";
+import AssetForm from "../components/forms/AssetForm";
 
 const Dashboard = () => {
   return (
@@ -10,16 +10,22 @@ const Dashboard = () => {
         Asset Dashboard
       </h1>
 
+
+      {/* Dashboard Statistics Cards */}
       <DashboardCard />
 
+
+      {/* Add Asset Form */}
       <div className="mt-8">
-        <Input
-          label="Search Asset"
-          placeholder="Enter asset name"
-        />
+        <AssetForm />
       </div>
 
-      <AssetTable />
+
+      {/* Asset Table */}
+      <div className="mt-8">
+        <AssetTable />
+      </div>
+
 
     </div>
   );
