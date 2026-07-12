@@ -1,29 +1,46 @@
+import React from "react";
+import StatCard from "../components/Dashboard/StatCard";
+import RecentAssets from "../components/Dashboard/RecentAssets";
+
 const Dashboard = () => {
     return (
-        <div className="space-y-6">
-            <h1 className="text-3xl font-bold">Dashboard</h1>
+        <div>
+            <h1>Dashboard</h1>
 
-            <div className="grid grid-cols-4 gap-4">
-                <div className="bg-white shadow rounded-lg p-5">
-                    <h2 className="text-gray-500">Total Assets</h2>
-                    <p className="text-3xl font-bold">125</p>
-                </div>
+            <div
+                style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(4,1fr)",
+                    gap: 20,
+                    marginTop: 20,
+                }}
+            >
+                <StatCard
+                    title="Total Assets"
+                    value="120"
+                    color="#2563eb"
+                />
 
-                <div className="bg-white shadow rounded-lg p-5">
-                    <h2 className="text-gray-500">Available</h2>
-                    <p className="text-3xl font-bold text-green-600">80</p>
-                </div>
+                <StatCard
+                    title="Assigned"
+                    value="80"
+                    color="#16a34a"
+                />
 
-                <div className="bg-white shadow rounded-lg p-5">
-                    <h2 className="text-gray-500">Allocated</h2>
-                    <p className="text-3xl font-bold text-blue-600">35</p>
-                </div>
+                <StatCard
+                    title="Available"
+                    value="25"
+                    color="#f59e0b"
+                />
 
-                <div className="bg-white shadow rounded-lg p-5">
-                    <h2 className="text-gray-500">Departments</h2>
-                    <p className="text-3xl font-bold">10</p>
-                </div>
+                <StatCard
+                    title="Maintenance"
+                    value="15"
+                    color="#dc2626"
+                />
             </div>
+
+            <RecentAssets />
         </div>
     );
 };

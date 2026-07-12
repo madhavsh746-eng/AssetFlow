@@ -1,25 +1,21 @@
+import React from "react";
+import UserTable from "../components/Users/UserTable";
+
 const Users = () => {
     return (
         <div>
-            <h1 className="text-3xl font-bold mb-6">Users</h1>
+            <h1>User Management</h1>
 
-            <table className="w-full border rounded">
-                <thead>
-                    <tr className="bg-gray-100">
-                        <th className="p-3">Name</th>
-                        <th className="p-3">Department</th>
-                        <th className="p-3">Assets</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr>
-                        <td className="p-3">John Doe</td>
-                        <td className="p-3">IT</td>
-                        <td className="p-3">2</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div
+                style={{
+                    marginTop: 20,
+                    background: "#fff",
+                    padding: 20,
+                    borderRadius: 10,
+                }}
+            >
+                <UserTable />
+            </div>
         </div>
     );
 };
