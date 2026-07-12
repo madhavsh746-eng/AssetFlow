@@ -55,8 +55,45 @@ const addAsset = async (req, res) => {
     }
 };
 
+const allocateAsset = async (req, res) => {
+    try {
+        const asset = await assetService.allocateAsset(
+            req.params.id,
+            req.body.userId
+        );
+
+        res.status(200).json({
+            success: true,
+            data: asset,
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message,
+        });
+    }
+};
+
+const returnAsset = async (req, res) => {
+    try {
+        const asset = await assetService.returnAsset(req.params.id);
+
+        res.status(200).json({
+            success: true,
+            data: asset,
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message,
+        });
+    }
+};
+
 module.exports = {
     getAssets,
     getAsset,
     addAsset,
+    allocateAsset,
+    returnAsset,
 };

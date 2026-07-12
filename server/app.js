@@ -8,11 +8,11 @@ app.use(cors());
 app.use(express.json());
 
 // Route Imports
-const authRoutes = require("./routes/authRoutes");
+const authRoutes = require("./routes/authRouters");
 const userRoutes = require("./routes/userRoutes");
 const assetRoutes = require("./routes/assetRoutes");
-const assignmentRoutes = require("./routes/assignmentRoutes");
-const departmentRoutes = require("./routes/departmentRoutes");
+const assignmentRoutes = require("./routes/assignmentRouters");
+const departmentRoutes = require("./routes/departmentRouters");
 
 // API Routes
 app.use("/api/auth", authRoutes);
