@@ -1,3 +1,4 @@
+import AssetTable from "../components/table/AssetTable";
 import DashboardCard from "../components/dashboard/DashboardCard";
 import Input from "../components/forms/Input";
 
@@ -17,6 +18,8 @@ const Dashboard = () => {
           placeholder="Enter asset name"
         />
       </div>
+
+      <AssetTable />
 
     </div>
   );
