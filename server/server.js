@@ -5,6 +5,7 @@ const app = require('./app');
 // Load env vars
 dotenv.config();
 
+
 // Connect to Database
 connectDB();
 
