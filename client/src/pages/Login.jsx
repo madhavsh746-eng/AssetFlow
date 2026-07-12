@@ -1,9 +1,92 @@
-const Login = () => {
+import React, { useState, useContext } from "react";
+import { loginUser } from "../services/authService";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+
+
+function Login() {
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const navigate = useNavigate();
+
+    const { login } = useContext(AuthContext);
+
+
+
+    const handleLogin = async (e) => {
+
+        e.preventDefault();
+
+
+        try {
+
+            const data = await loginUser({
+                email,
+                password
+            });
+
+
+            // Store JWT token using AuthContext
+            login(data.token);
+
+
+            navigate("/");
+
+
+        }
+        catch (error) {
+
+            console.log(error);
+            alert("Login Failed");
+
+        }
+
+
+    };
+
+
+
     return (
-        <div className="flex items-center justify-center h-screen">
-            <h1 className="text-3xl font-bold">Login Page</h1>
+
+        <div>
+
+            <h2>Login</h2>
+
+
+            <form onSubmit={handleLogin}>
+
+
+                <input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+
+
+                <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+
+
+                <button type="submit">
+                    Login
+                </button>
+
+
+            </form>
+
+
         </div>
+
     );
-};
+
+
+}
 
 export default Login;
