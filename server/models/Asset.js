@@ -1,56 +1,76 @@
 const mongoose = require('mongoose');
 
-const assetSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
+const assetSchema = new mongoose.Schema(
+  {
+    assetTag: {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
+    },
 
-  assetCode: {
-    type: String,
-    required: true,
-    unique: true,
-  },
+    name: {
+      type: String,
+      required: true,
+      trim: true,
+    },
 
-  category: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Category',
-    required: true,
-  },
+    category: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Category',
+      required: true,
+    },
 
-  status: {
-    type: String,
-    enum: ['Available', 'Allocated', 'Maintenance', 'Retired'],
-    default: 'Available',
-  },
+    department: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Department',
+    },
 
-  assignedTo: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-  },
+    serialNumber: {
+      type: String,
+      trim: true,
+    },
 
-  department: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Department',
-  },
+    purchaseDate: {
+      type: Date,
+    },
 
-  purchaseDate: {
-    type: Date,
-  },
+    purchaseCost: {
+      type: Number,
+    },
 
-  location: {
-    type: String,
-  },
+    warrantyExpiry: {
+      type: Date,
+    },
 
-  quantity: {
-    type: Number,
-    default: 1,
-  },
+    condition: {
+      type: String,
+      enum: ['New', 'Good', 'Fair', 'Damaged'],
+      default: 'Good',
+    },
 
-  qrCode: {
-    type: String,
-  },
+    status: {
+      type: String,
+      enum: ['Available', 'Assigned', 'Maintenance', 'Retired'],
+      default: 'Available',
+    },
 
-}, { timestamps: true });
+    // Added for assignment tracking
+
+    isAssigned: {
+      type: Boolean,
+      default: false,
+    },
+
+    currentAssignment: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Assignment',
+      default: null,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
 module.exports = mongoose.model('Asset', assetSchema);
