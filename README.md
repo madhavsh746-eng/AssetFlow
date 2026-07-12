@@ -148,7 +148,3 @@ AssetFlow
 🚧 Currently under development .
 
 ---
-
-## 📄 License
-
-This project is developed for educational and hackathon purposes.
