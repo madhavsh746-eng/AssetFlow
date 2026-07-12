@@ -1,65 +1,139 @@
+import StatusBadge from "../common/StatusBadge";
+
+
+const assets = [
+  {
+    id:1,
+    name:"Dell Laptop",
+    category:"Laptop",
+    serial:"DL101",
+    assigned:"Rahul",
+    status:"Available"
+  },
+  {
+    id:2,
+    name:"iPhone 15",
+    category:"Mobile",
+    serial:"IP202",
+    assigned:"Amit",
+    status:"Assigned"
+  },
+  {
+    id:3,
+    name:"HP Monitor",
+    category:"Monitor",
+    serial:"HP303",
+    assigned:"-",
+    status:"Maintenance"
+  }
+];
+
+
 const AssetTable = () => {
 
-  const assets = [
-    {
-      id: 1,
-      name: "Laptop",
-      category: "Electronics",
-      status: "Assigned"
-    },
-    {
-      id: 2,
-      name: "Monitor",
-      category: "Electronics",
-      status: "Available"
-    }
-  ];
+return (
 
-  return (
-    <div className="mt-8 overflow-x-auto">
+<div className="bg-white rounded-xl shadow-md p-5">
 
-      <table className="w-full border">
+<h2 className="text-xl font-bold mb-4">
+Asset Management
+</h2>
 
-        <thead>
-          <tr className="bg-gray-100">
-            <th className="p-3 border">ID</th>
-            <th className="p-3 border">Asset</th>
-            <th className="p-3 border">Category</th>
-            <th className="p-3 border">Status</th>
-          </tr>
-        </thead>
 
-        <tbody>
+<table className="w-full">
 
-          {assets.map((asset) => (
-            <tr key={asset.id}>
+<thead>
+<tr className="border-b">
 
-              <td className="p-3 border">
-                {asset.id}
-              </td>
+<th className="text-left p-3">
+Asset
+</th>
 
-              <td className="p-3 border">
-                {asset.name}
-              </td>
+<th className="text-left p-3">
+Category
+</th>
 
-              <td className="p-3 border">
-                {asset.category}
-              </td>
+<th className="text-left p-3">
+Serial Number
+</th>
 
-              <td className="p-3 border">
-                {asset.status}
-              </td>
+<th className="text-left p-3">
+Assigned To
+</th>
 
-            </tr>
-          ))}
+<th className="text-left p-3">
+Status
+</th>
 
-        </tbody>
+<th className="text-left p-3">
+Action
+</th>
 
-      </table>
+</tr>
+</thead>
 
-    </div>
-  );
-};
+
+<tbody>
+
+{
+assets.map((asset)=>(
+
+<tr 
+key={asset.id}
+className="border-b"
+>
+
+<td className="p-3">
+{asset.name}
+</td>
+
+
+<td className="p-3">
+{asset.category}
+</td>
+
+
+<td className="p-3">
+{asset.serial}
+</td>
+
+
+<td className="p-3">
+{asset.assigned}
+</td>
+
+
+<td className="p-3">
+<StatusBadge status={asset.status}/>
+</td>
+
+
+<td className="p-3">
+
+<button className="text-blue-600">
+View
+</button>
+
+</td>
+
+
+</tr>
+
+))
+
+}
+
+
+</tbody>
+
+</table>
+
+
+</div>
+
+)
+
+}
 
 
 export default AssetTable;
