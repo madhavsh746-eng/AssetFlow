@@ -4,28 +4,48 @@ import AssetForm from "../components/forms/AssetForm";
 
 const Dashboard = () => {
   return (
-    <div className="p-6">
+    <div className="p-4 sm:p-6 lg:p-8">
 
-      <h1 className="text-3xl font-bold mb-6">
-        Asset Dashboard
-      </h1>
+      {/* Header */}
+      <div className="mb-6">
+        <h1 className="text-2xl sm:text-3xl font-bold">
+          Asset Dashboard
+        </h1>
 
-
-      {/* Dashboard Statistics Cards */}
-      <DashboardCard />
-
-
-      {/* Add Asset Form */}
-      <div className="mt-8">
-        <AssetForm />
+        <p className="text-gray-500 mt-2">
+          Manage and track all company assets efficiently
+        </p>
       </div>
 
 
-      {/* Asset Table */}
-      <div className="mt-8">
-        <AssetTable />
-      </div>
+      {/* Dashboard Content */}
+      <div className="space-y-8">
 
+        {/* Statistics Cards */}
+        <section>
+          <DashboardCard />
+        </section>
+
+
+        {/* Add Asset Form */}
+        <section className="
+          bg-white 
+          rounded-xl 
+          shadow-md 
+          p-4 
+          sm:p-6
+        ">
+          <AssetForm />
+        </section>
+
+
+        {/* Asset Management Table */}
+        <section>
+          <AssetTable />
+        </section>
+
+
+      </div>
 
     </div>
   );
