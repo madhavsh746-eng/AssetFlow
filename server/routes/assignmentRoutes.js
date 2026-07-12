@@ -2,12 +2,10 @@ const express = require("express");
 
 const router = express.Router();
 
-// Authentication APIs will be added later
-
 router.get("/", (req, res) => {
     res.json({
         success: true,
-        message: "Authentication Route Working",
+        message: "Assignment Route Working",
     });
 });
 
